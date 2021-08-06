@@ -1,0 +1,19 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: cloud-consumer-order
+    #consul注册中心地址
+  cloud:
+    consul:
+      host: 192.168.3.129
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
+          #服务的请求端口
+        port: ${server.port}
+          #指定开启ip地址注册
+        prefer-ip-address: true
+          #当前服务的请求ip
+        ip-address: ${spring.cloud.client.ip-address}
